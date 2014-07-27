@@ -1,11 +1,13 @@
 package points.client;
 
+import points.dto.user.User;
 import points.user.UserLoginLocal;
 import points.user.dao.UserDaoLocal;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 
 /**
@@ -43,9 +45,12 @@ public class UserClient implements Serializable{
     }
 
     public String getMessage(){
-        return "nice to meet you, "+userDaoLocal.findUserById(id);
+
+        User userById = userDaoLocal.findUserById(id);
+        return "nice to meet you, "+ userById.getUsername();
     }
 
+    @Transactional
     public String saveUser(){
         id = userLoginLocal.login(username, password);
         return "welcome";

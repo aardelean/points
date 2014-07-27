@@ -6,7 +6,7 @@ import points.user.dao.UserDaoLocal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.*;
+import javax.transaction.Transactional;
 
 /**
  * Created by aardelean on 19.07.2014.
@@ -17,6 +17,7 @@ public class UserDao implements UserDaoLocal{
     @PersistenceContext(name="users-pu")
     private EntityManager entityManager;
 
+    @Override
     @Transactional
     public void saveUser(User user){
         entityManager.persist(user);
