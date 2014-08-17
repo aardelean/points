@@ -17,19 +17,6 @@
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-ejb</artifactId>
-            <!--<scope>provided</scope>-->
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-social</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-oauth</artifactId>
-        </dependency>
     </dependencies>
     <build>
         <finalName>socialProvider</finalName>

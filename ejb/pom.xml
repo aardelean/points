@@ -88,16 +88,6 @@
             <scope>test</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-ejb</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-social</artifactId>
-        </dependency>
-
     </dependencies>
     <!--<build>-->
         <!--<plugins>-->

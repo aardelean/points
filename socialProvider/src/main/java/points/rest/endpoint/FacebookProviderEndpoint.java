@@ -1,6 +1,5 @@
 package points.rest.endpoint;
 
-import com.lodgon.dali.core.social.FacebookExternalNetwork;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -27,7 +26,8 @@ public class FacebookProviderEndpoint {
     @Path("/connect")
     @Produces(MediaType.APPLICATION_JSON)
     public String connect(){
-        FacebookExternalNetwork externalNetwork = new FacebookExternalNetwork(APP_ID,APP_SECRET);
-        return externalNetwork.connect("http://localhost:8080/socialProvider/facebook/test");
+//        FacebookExternalNetwork externalNetwork = new FacebookExternalNetwork(APP_ID,APP_SECRET);
+//        return externalNetwork.connect("http://localhost:8080/socialProvider/facebook/test");
+        return "wrong";
     }
 }

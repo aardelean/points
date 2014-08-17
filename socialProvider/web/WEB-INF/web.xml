@@ -10,8 +10,4 @@
         <param-name>resteasy.scan</param-name>
         <param-value>true</param-value>
     </context-param>
-    <context-param>
-        <param-name>resteasy.resources</param-name>
-        <param-value>com.lodgon.dali.core.social.resources</param-value>
-    </context-param>
 </web-app>

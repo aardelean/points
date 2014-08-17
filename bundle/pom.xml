@@ -54,16 +54,6 @@
                             <artifactId>ejb</artifactId>
                             <bundleFileName>ejb.jar</bundleFileName>
                         </ejbModule>
-                        <ejbModule>
-                            <groupId>com.lodgon.dalicore</groupId>
-                            <artifactId>dalicore-ejb</artifactId>
-                            <bundleFileName>dalicore-ejb-1.1.0.jar</bundleFileName>
-                        </ejbModule>
-                        <ejbModule>
-                            <groupId>com.lodgon.dalicore</groupId>
-                            <artifactId>dalicore-social</artifactId>
-                            <bundleFileName>dalicore-social-1.1.0.jar</bundleFileName>
-                        </ejbModule>
                     </modules>
                     <displayName>ejb-ee</displayName>
                     <!-- If I want maven to generate the application.xml, set this to true -->
@@ -98,22 +88,6 @@
             <artifactId>ejb</artifactId>
             <version>1.0-SNAPSHOT</version>
             <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-ejb</artifactId>
-            <version>1.1.0</version>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-social</artifactId>
-            <version>1.1.0</version>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>com.lodgon.dalicore</groupId>
-            <artifactId>dalicore-oauth</artifactId>
         </dependency>
     </dependencies>
 
