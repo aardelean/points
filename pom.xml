@@ -10,13 +10,25 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <hibernateVersion>4.3.1.Final</hibernateVersion>
+        <junit-version>4.11</junit-version>
+        <dalicore.version>1.1.0</dalicore.version>
+        <arquillian-version>1.1.4.Final</arquillian-version>
+        <arquillian-wildfly-version>8.1.0.Final</arquillian-wildfly-version>
+        <arquillian-transaction-version>1.0.1.Final</arquillian-transaction-version>
     </properties>
-
+    <repositories>
+        <repository>
+            <id>mvnRepo</id>
+            <url>http://mvnrepository.com/</url>
+        </repository>
+    </repositories>
     <modules>
         <module>ejb</module>
         <module>bundle</module>
         <module>client</module>
         <module>api</module>
+        <module>socialProvider</module>
+        <module>dao</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -62,6 +74,14 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
+            <!--mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.30</version>
+                <scope>compile</scope>
+            </dependency>
+
 
             <!--nosql config -->
 
@@ -83,8 +103,64 @@
                 <version>4.16.4.Final</version>
             </dependency>
 
+            <!-- testing -->
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian-version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-transaction-bom</artifactId>
+                <version>${arquillian-transaction-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-arquillian-container-embedded</artifactId>
+                <version>${arquillian-wildfly-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-embedded</artifactId>
+                <version>${arquillian-wildfly-version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- social -->
+            <dependency>
+                <groupId>com.lodgon.dalicore</groupId>
+                <artifactId>dalicore-ejb</artifactId>
+                <version>${dalicore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lodgon.dalicore</groupId>
+                <artifactId>dalicore-social</artifactId>
+                <version>${dalicore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lodgon.dalicore</groupId>
+                <artifactId>dalicore-oauth</artifactId>
+                <version>${dalicore.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lodgon.dalicore</groupId>
+                <artifactId>dalicore</artifactId>
+                <version>${dalicore.version}</version>
+            </dependency>
 
         </dependencies>
+
     </dependencyManagement>
 
 </project>

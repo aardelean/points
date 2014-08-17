@@ -7,6 +7,9 @@
       <element id="archive" name="client.war">
         <element id="artifact" artifact-name="client:war exploded" />
       </element>
+      <element id="archive" name="socialProvider.war">
+        <element id="artifact" artifact-name="rest:war exploded" />
+      </element>
       <element id="archive" name="ejb.jar">
         <element id="artifact" artifact-name="ejb:ejb exploded" />
       </element>
@@ -14,8 +17,20 @@
         <element id="archive" name="api-1.0-SNAPSHOT.jar">
           <element id="module-output" name="api" />
         </element>
-        <element id="library" level="project" name="Maven: org.jboss.jbossts:jbossjta:4.16.4.Final" />
+        <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.30" />
+        <element id="library" level="project" name="Maven: com.lodgon.dalicore:dalicore-ejb:1.1.0" />
+        <element id="library" level="project" name="Maven: com.lodgon.dalicore:dalicore-social:1.1.0" />
+        <element id="library" level="project" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-client:1.11" />
+        <element id="library" level="project" name="Maven: com.sun.jersey:jersey-client:1.11" />
+        <element id="library" level="project" name="Maven: com.sun.jersey:jersey-core:1.11" />
+        <element id="library" level="project" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-signature:1.11" />
+        <element id="library" level="project" name="Maven: org.codehaus.jettison:jettison:1.3" />
+        <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+        <element id="library" level="project" name="Maven: com.lodgon.dalicore:dalicore-oauth:1.1.0" />
+        <element id="library" level="project" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-server:1.11" />
       </element>
+      <element id="library" level="project" name="Maven: com.lodgon.dalicore:dalicore-ejb:ejb:1.1.0" />
+      <element id="library" level="project" name="Maven: com.lodgon.dalicore:dalicore-social:ejb:1.1.0" />
     </root>
   </artifact>
 </component>

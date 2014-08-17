@@ -7,5 +7,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface UserLoginLocal {
-    public String login(String username, String password);
+    public Integer login(String username, String password);
 }

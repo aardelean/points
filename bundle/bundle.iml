@@ -13,6 +13,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
+          <factory-entry name="mysql-jpa" />
           <factory-entry name="org.hibernate.ogm.tutorial.jpa" />
           <factory-entry name="users-pu" />
         </datasource-mapping>
@@ -32,9 +33,22 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="client" />
+    <orderEntry type="module" module-name="rest" />
     <orderEntry type="module" module-name="ejb" />
     <orderEntry type="module" module-name="api" />
-    <orderEntry type="library" name="Maven: org.jboss.jbossts:jbossjta:4.16.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.30" level="project" />
+    <orderEntry type="library" name="Maven: com.lodgon.dalicore:dalicore-ejb:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lodgon.dalicore:dalicore-social:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-client:1.11" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-client:1.11" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.11" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-signature:1.11" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jettison:jettison:1.3" level="project" />
+    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.lodgon.dalicore:dalicore-ejb:ejb:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lodgon.dalicore:dalicore-social:ejb:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.lodgon.dalicore:dalicore-oauth:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.sun.jersey.contribs.jersey-oauth:oauth-server:1.11" level="project" />
   </component>
 </module>
 

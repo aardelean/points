@@ -1,6 +1,6 @@
 package points.client;
 
-import points.dto.user.User;
+import points.dto.user.Contact;
 import points.user.UserLoginLocal;
 import points.user.dao.UserDaoLocal;
 
@@ -26,7 +26,7 @@ public class UserClient implements Serializable{
     private String username;
     private String password;
 
-    private String id;
+    private Integer id;
 
     public String getUsername() {
         return username;
@@ -45,9 +45,8 @@ public class UserClient implements Serializable{
     }
 
     public String getMessage(){
-
-        User userById = userDaoLocal.findUserById(id);
-        return "nice to meet you, "+ userById.getUsername();
+        Contact contactById = userDaoLocal.findUserById(id);
+        return "nice to meet you, "+ contactById.getUsername() +" with id = "+id;
     }
 
     @Transactional

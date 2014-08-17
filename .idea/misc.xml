@@ -6,6 +6,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="javaeeApplication" url="file://$PROJECT_DIR$/bundle" />
     <file type="web" url="file://$PROJECT_DIR$/client" />
+    <file type="web" url="file://$PROJECT_DIR$/socialProvider" />
   </component>
   <component name="IdProvider" IDEtalkID="0E573959881AFA828C9D7AD84399CA1A" />
   <component name="MavenProjectsManager">

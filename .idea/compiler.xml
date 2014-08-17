@@ -25,7 +25,9 @@
         <module name="api" />
         <module name="bundle" />
         <module name="client" />
+        <module name="dao" />
         <module name="ejb" />
+        <module name="rest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
