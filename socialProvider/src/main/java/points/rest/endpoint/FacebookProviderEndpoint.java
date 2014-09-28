@@ -1,19 +1,34 @@
 package points.rest.endpoint;
 
 
+import org.agorava.api.service.OAuthLifeCycleService;
+import org.agorava.facebook.Facebook;
+import org.agorava.facebook.GraphApi;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Created by aardelean on 15.08.2014.
  */
 @Path("/facebook")
+@Named
 public class FacebookProviderEndpoint {
 
-    private final static String APP_ID="625836187535333";
-    private final static String APP_SECRET="c5460f0e605e483ce79adffc1bb8aa78";
+    @Inject
+    OAuthLifeCycleService lifeCycleService;
+
+    @Inject
+    @Facebook
+    private GraphApi graphApi;
 
     @GET
     @Path("/test")
@@ -25,9 +40,16 @@ public class FacebookProviderEndpoint {
     @GET
     @Path("/connect")
     @Produces(MediaType.APPLICATION_JSON)
-    public String connect(){
-//        FacebookExternalNetwork externalNetwork = new FacebookExternalNetwork(APP_ID,APP_SECRET);
-//        return externalNetwork.connect("http://localhost:8080/socialProvider/facebook/test");
-        return "wrong";
+    public Response connect() throws URISyntaxException {
+        lifeCycleService.buildSessionFor("Facebook");
+        return Response.seeOther(new URI(lifeCycleService.startDanceFor("Facebook"))).build();
+    }
+
+    @GET
+    @Path("/callback")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String callback(@QueryParam("code") String code){
+        lifeCycleService.endDance(code);
+        return graphApi.fetchObject("me/friends",String.class);
     }
 }

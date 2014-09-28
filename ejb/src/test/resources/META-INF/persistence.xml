@@ -18,9 +18,9 @@
         <description>
 
         </description>
-        <class>points.dto.user.Contact</class>
-        <class>points.dto.user.UserRelation</class>
-        <class>points.dto.user.VisibilityGroup</class>
+        <class>points.dto.user_old.Contact</class>
+        <class>points.dto.user_old.UserRelation</class>
+        <class>points.dto.user_old.VisibilityGroup</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

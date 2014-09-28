@@ -1,6 +1,6 @@
-package points.user.dao;
+package points.dao.user.dao;
 
-import points.dto.user.Contact;
+import points.dto.user.User;
 
 import javax.ejb.Local;
 import javax.transaction.Transactional;
@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 @Local
 public interface UserDaoLocal {
     @Transactional(Transactional.TxType.REQUIRES_NEW)
-    public void saveUser(Contact contact);
-    public Contact findUserByUserName(String username);
-    public Contact findUserById(Integer id);
+    public void saveUser(User contact);
+    public User findUserByUserName(String username);
+    public User findUserById(Long id);
 }

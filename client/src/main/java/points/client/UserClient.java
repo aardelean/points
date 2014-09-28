@@ -1,8 +1,8 @@
 package points.client;
 
-import points.dto.user.Contact;
-import points.user.UserLoginLocal;
-import points.user.dao.UserDaoLocal;
+import points.dao.user.UserLoginLocal;
+import points.dao.user.dao.UserDaoLocal;
+import points.dto.user.User;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
@@ -17,6 +17,8 @@ import java.io.Serializable;
 @ConversationScoped
 public class UserClient implements Serializable{
 
+
+
     @EJB
     private UserLoginLocal userLoginLocal;
 
@@ -26,7 +28,7 @@ public class UserClient implements Serializable{
     private String username;
     private String password;
 
-    private Integer id;
+    private Long id;
 
     public String getUsername() {
         return username;
@@ -45,7 +47,7 @@ public class UserClient implements Serializable{
     }
 
     public String getMessage(){
-        Contact contactById = userDaoLocal.findUserById(id);
+        User contactById = userDaoLocal.findUserById(id);
         return "nice to meet you, "+ contactById.getUsername() +" with id = "+id;
     }
 
@@ -54,5 +56,7 @@ public class UserClient implements Serializable{
         id = userLoginLocal.login(username, password);
         return "welcome";
     }
+
+
 
 }

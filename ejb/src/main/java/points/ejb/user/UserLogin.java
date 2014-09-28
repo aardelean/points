@@ -1,8 +1,8 @@
 package points.ejb.user;
 
-import points.dto.user.Contact;
-import points.user.UserLoginLocal;
-import points.user.dao.UserDaoLocal;
+import points.dao.user.UserLoginLocal;
+import points.dao.user.dao.UserDaoLocal;
+import points.dto.user.User;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -15,9 +15,9 @@ public class UserLogin implements UserLoginLocal{
 
     @EJB
     private UserDaoLocal dao;
-
-    public Integer login(String username, String password){
-        Contact contact = new Contact();
+    @Override
+    public Long login(String username, String password){
+        User contact = new User();
         contact.setUsername(username);
         contact.setPassword(password);
         dao.saveUser(contact);

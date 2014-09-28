@@ -1,13 +1,12 @@
 package points.ejb.user.dao;
 
-import points.dto.user.Contact;
-import points.user.dao.UserDaoLocal;
+import points.dao.user.dao.UserDaoLocal;
+import points.dto.user.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.util.Date;
 
 /**
  * Created by aardelean on 19.07.2014.
@@ -20,19 +19,17 @@ public class UserDao implements UserDaoLocal{
 
     @Override
     @Transactional
-    public void saveUser(Contact contact){
-        contact.setCreationDate(new Date());
-        contact.setLastUpdatedDate(new Date());
+    public void saveUser(User contact){
         entityManager.persist(contact);
     }
 
     @Override
-    public Contact findUserByUserName(String username) {
-        return (Contact)entityManager.createQuery("FROM User WHERE username:=username").setParameter("username",username).getSingleResult();
+    public User findUserByUserName(String username) {
+        return (User)entityManager.createQuery("FROM User WHERE username:=username").setParameter("username",username).getSingleResult();
     }
 
     @Override
-    public Contact findUserById(Integer id) {
-        return entityManager.find(Contact.class,id);
+    public User findUserById(Long id) {
+        return entityManager.find(User.class,id);
     }
 }

@@ -1,46 +1,53 @@
 package points.dto.point;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
 /**
- * Created by alex on 7/13/2014.
+ * Created by aardelean on 14.09.2014.
  */
+@Entity
+@Table(name="point")
 public class Point {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String longitude;
+    private String latitude;
+    private Date time;
 
-    private int userId;
-
-    private long longitude;
-    private long latitude;
-
-    private long lastTime;
-
-    public int getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public long getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(long longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public long getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public long getLastTime() {
-        return lastTime;
+    public Date getTime() {
+        return time;
     }
 
-    public void setLastTime(long lastTime) {
-        this.lastTime = lastTime;
+    public void setTime(Date time) {
+        this.time = time;
     }
 }

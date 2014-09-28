@@ -9,9 +9,9 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import points.dto.user.Contact;
+import points.dao.user.dao.UserDaoLocal;
+import points.dto.user.User;
 import points.ejb.user.dao.UserDao;
-import points.user.dao.UserDaoLocal;
 
 import javax.ejb.EJB;
 
@@ -44,7 +44,7 @@ public class ContactDaoTest {
 
     @Test
     public void testInsertUser(){
-        Contact contact =new Contact();
+        User contact =new User();
         contact.setUsername("test");
         contact.setPassword("pass");
         userlDaoLocal.saveUser(contact);

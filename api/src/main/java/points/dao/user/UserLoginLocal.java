@@ -1,4 +1,4 @@
-package points.user;
+package points.dao.user;
 
 import javax.ejb.Local;
 
@@ -7,5 +7,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface UserLoginLocal {
-    public Integer login(String username, String password);
+    public Long login(String username, String password);
 }
