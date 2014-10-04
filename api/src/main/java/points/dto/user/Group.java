@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by aardelean on 14.09.2014.
  */
 @Entity
-@Table(name = "group")
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue
@@ -14,14 +14,15 @@ public class Group {
     @ManyToOne
     @JoinColumn(name = "creatorId")
     private User creator;
+    @Lob
     private String contactIds;
 
     @OneToOne
-    @JoinColumn(name = "status")
+    @JoinColumn(name = "statusId")
     private UserStatus status;
 
     private String name;
-    private boolean enabled = true;
+    private Boolean enabled = true;
 
     public Long getId() {
         return id;

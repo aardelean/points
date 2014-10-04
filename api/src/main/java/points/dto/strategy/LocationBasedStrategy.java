@@ -45,4 +45,26 @@ public class LocationBasedStrategy implements Serializable{
     public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        LocationBasedStrategy that = (LocationBasedStrategy) o;
+
+        if (!locationName.equals(that.locationName)) return false;
+        if (locationType != that.locationType) return false;
+        if (!strategy.equals(that.strategy)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = locationType.hashCode();
+        result = 31 * result + locationName.hashCode();
+        result = 31 * result + strategy.hashCode();
+        return result;
+    }
 }

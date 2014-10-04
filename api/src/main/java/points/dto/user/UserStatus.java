@@ -8,17 +8,22 @@ import javax.persistence.*;
 @Entity
 @Table(name="userStatus")
 public class UserStatus {
+
     @Id
     @GeneratedValue
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
     @OneToOne(mappedBy = "status")
     @JoinColumn(name = "groupId")
     private Group group;
+
     @Enumerated(EnumType.STRING)
     private UserStatusType type;
+
     private Integer pingTime;
 
     public Long getId() {

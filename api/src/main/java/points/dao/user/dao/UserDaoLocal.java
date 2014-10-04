@@ -10,8 +10,11 @@ import javax.transaction.Transactional;
  */
 @Local
 public interface UserDaoLocal {
+
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void saveUser(User contact);
+
     public User findUserByUserName(String username);
+
     public User findUserById(Long id);
 }
