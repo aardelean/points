@@ -1,6 +1,8 @@
-package points.dto.user;
+package points.dao.user.dto;
 
+import points.dao.group.dto.Group;
 import points.dto.social.SocialProvider;
+import points.dto.user.Friend;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -8,8 +8,8 @@ import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
-import points.dao.points.PointCacheDaoLocal;
-import points.dto.point.Point;
+import points.dao.points.dao.PointCacheDaoLocal;
+import points.dao.points.dto.Point;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

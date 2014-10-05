@@ -1,4 +1,6 @@
-package points.dto.user;
+package points.dao.group.dto;
+
+import points.dao.user.dto.User;
 
 import javax.persistence.*;
 

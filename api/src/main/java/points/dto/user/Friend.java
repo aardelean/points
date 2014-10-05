@@ -1,5 +1,6 @@
 package points.dto.user;
 
+import points.dao.user.dto.User;
 import points.dto.social.SocialProvider;
 
 import javax.persistence.*;

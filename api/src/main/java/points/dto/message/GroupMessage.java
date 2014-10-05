@@ -1,6 +1,6 @@
 package points.dto.message;
 
-import points.dto.user.Group;
+import points.dao.group.dto.Group;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;

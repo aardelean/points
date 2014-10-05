@@ -1,6 +1,6 @@
 package points.dto.message;
 
-import points.dto.user.User;
+import points.dao.user.dto.User;
 
 import javax.persistence.*;
 import java.util.Date;

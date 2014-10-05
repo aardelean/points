@@ -1,6 +1,6 @@
-package points.dao.points;
+package points.dao.points.dao;
 
-import points.dto.point.Point;
+import points.dao.points.dto.Point;
 
 import javax.ejb.Local;
 

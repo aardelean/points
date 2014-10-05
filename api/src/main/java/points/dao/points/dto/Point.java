@@ -1,4 +1,4 @@
-package points.dto.point;
+package points.dao.points.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
