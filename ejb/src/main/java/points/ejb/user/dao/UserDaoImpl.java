@@ -1,7 +1,7 @@
 package points.ejb.user.dao;
 
-import points.dao.user.dao.UserDao;
-import points.dao.user.dto.User;
+import points.user.dao.UserDao;
+import points.user.dto.User;
 import points.ejb.dao.GenericDaoImpl;
 
 import javax.ejb.Stateless;

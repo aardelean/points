@@ -8,8 +8,8 @@ import org.infinispan.configuration.cache.ConfigurationBuilder;
 import org.infinispan.configuration.global.GlobalConfigurationBuilder;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.manager.EmbeddedCacheManager;
-import points.dao.points.dao.PointCacheDaoLocal;
-import points.dao.points.dto.Point;
+import points.point.dao.PointCacheDaoLocal;
+import points.point.dto.Point;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -22,7 +22,7 @@ import javax.ejb.Startup;
 @Singleton
 @Startup
 public class PointCacheDao implements PointCacheDaoLocal {
-//    @Resource(lookup="java:jboss/infinispan/container/points")
+//    @Resource(lookup="java:jboss/infinispan/container/point")
 //    private DefaultCacheContainer cacheContainer;
 
     private org.infinispan.Cache<Long, Point> cache;
@@ -32,7 +32,7 @@ public class PointCacheDao implements PointCacheDaoLocal {
     @PostConstruct
     public void initCache()  {
         if(manager == null) {
-            new GlobalConfigurationBuilder().globalJmxStatistics().allowDuplicateDomains(true).jmxDomain("points-domain");
+            new GlobalConfigurationBuilder().globalJmxStatistics().allowDuplicateDomains(true).jmxDomain("point-domain");
             Configuration configuration = new ConfigurationBuilder().clustering().cacheMode(CacheMode.LOCAL)
                     .jmxStatistics().disable().build();
             manager = new DefaultCacheManager(configuration);

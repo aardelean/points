@@ -1,8 +1,8 @@
 package points.client;
 
-import points.dao.user.UserLogin;
-import points.dao.user.dao.UserDao;
-import points.dao.user.dto.User;
+import points.user.UserLogin;
+import points.user.dao.UserDao;
+import points.user.dto.User;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;

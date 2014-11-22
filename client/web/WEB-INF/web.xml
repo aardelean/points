@@ -30,7 +30,7 @@
         <!--<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>-->
         <!--<init-param>-->
             <!--<param-name>javax.ws.rs.Application</param-name>-->
-            <!--<param-value>points.client.config.RestApplication</param-value>-->
+            <!--<param-value>point.client.config.RestApplication</param-value>-->
         <!--</init-param>-->
         <!--<init-param>-->
             <!--<param-name>resteasy.scan</param-name>-->

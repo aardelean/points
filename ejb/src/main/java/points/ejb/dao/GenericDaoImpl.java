@@ -1,6 +1,6 @@
 package points.ejb.dao;
 
-import points.dao.GenericDao;
+import points.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

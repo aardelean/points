@@ -1,7 +1,7 @@
 package points.ejb.user;
 
-import points.dao.user.dao.UserDao;
-import points.dao.user.dto.User;
+import points.user.dao.UserDao;
+import points.user.dto.User;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -10,7 +10,7 @@ import javax.ejb.Stateless;
  * Created by alex on 7/12/2014.
  */
 @Stateless
-public class UserLogin implements points.dao.user.UserLogin {
+public class UserLogin implements points.user.UserLogin {
 
     @EJB
     private UserDao dao;

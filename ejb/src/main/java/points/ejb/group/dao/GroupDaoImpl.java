@@ -1,9 +1,10 @@
 package points.ejb.group.dao;
 
-import points.dao.group.dao.GroupDao;
-import points.dao.group.dto.Group;
+import points.group.dao.GroupDao;
+import points.group.dto.Group;
 import points.ejb.dao.GenericDaoImpl;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by aardelean on 04.10.2014.
  */
+@Stateless
 public class GroupDaoImpl extends GenericDaoImpl<Group> implements GroupDao{
 
     @PersistenceContext

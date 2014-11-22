@@ -3,8 +3,8 @@ package points.user;
 import org.junit.Assert;
 import org.junit.Test;
 import points.AbstractEEDeployment;
-import points.dao.user.dao.UserDao;
-import points.dao.user.dto.User;
+import points.user.dao.UserDao;
+import points.user.dto.User;
 
 import javax.inject.Inject;
 
