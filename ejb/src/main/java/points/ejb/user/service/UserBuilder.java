@@ -1,4 +1,4 @@
-package points.ejb.user;
+package points.ejb.user.service;
 
 import points.user.dto.SocialProvider;
 import points.user.dto.User;

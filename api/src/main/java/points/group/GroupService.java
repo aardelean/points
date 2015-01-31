@@ -1,5 +1,7 @@
 package points.group;
 
+import points.group.dto.Group;
+import points.group.dto.UserStatus;
 import points.group.dto.UserStatusType;
 
 import javax.ejb.Local;
@@ -11,20 +13,22 @@ import java.util.List;
 @Local
 public interface GroupService {
 
-    void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType, Integer pingTime);
+    Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType, Integer pingTime);
 
-    void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType);
+    Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType);
 
-    void addGroup(List<Long> friendIds, Long creatorId, String name, String userStatusType);
+    Group addGroup(List<Long> friendIds, Long creatorId, String name, String userStatusType);
 
-    void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled);
+    Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled);
 
-    void addGroup(List<Long> friendIds, Long creatorId, String name);
+    Group addGroup(List<Long> friendIds, Long creatorId, String name);
 
-    void changeStatus(Long userStatus, Long groupId);
+    Group changeStatus(Long userStatus, Long groupId);
 
-    void changeStatus(Long creatorId, UserStatusType userStatusType, Long groupId);
+    Group changeStatus(Long creatorId, UserStatusType userStatusType, Long groupId);
 
-    void addUserStatus(Long creatorId, UserStatusType userStatusType);
+    UserStatus addUserStatus(Long creatorId, UserStatusType userStatusType);
+
+    void removeGroup(Long groupId);
 
 }

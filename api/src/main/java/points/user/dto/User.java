@@ -22,15 +22,20 @@ public class User {
     private SocialProvider socialProvider;
 
     @OneToMany(mappedBy = "user")
-    private List<Friend> friends;
+    private List<ContactCollection> contactCollections;
 
     @OneToMany(mappedBy = "creator")
-    private List<Group> groups;
+    private List<Group> createdGroups;
+
+    @ManyToMany(mappedBy = "contacts", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    private List<Group> belongingGroups;
+
     private String phoneNo;
     private String email;
     private Date creationDate;
     private Date lastModifiedDate;
     private String password;
+
 
     public Long getId() {
         return id;
@@ -39,20 +44,20 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    public List<Friend> getFriends() {
-        return friends;
+    public List<ContactCollection> getContactCollections() {
+        return contactCollections;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public List<Group> getCreatedGroups() {
+        return createdGroups;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setCreatedGroups(List<Group> createdGroups) {
+        this.createdGroups = createdGroups;
     }
 
-    public void setFriends(List<Friend> friends) {
-        this.friends = friends;
+    public void setContactCollections(List<ContactCollection> contactCollections) {
+        this.contactCollections = contactCollections;
     }
 
     public String getUsername() {
@@ -125,5 +130,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Group> getBelongingGroups() {
+        return belongingGroups;
+    }
+
+    public void setBelongingGroups(List<Group> belongingGroups) {
+        this.belongingGroups = belongingGroups;
     }
 }

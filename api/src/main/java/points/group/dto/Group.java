@@ -4,6 +4,7 @@ import points.strategy.dto.Strategy;
 import points.user.dto.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by aardelean on 14.09.2014.
@@ -17,16 +18,24 @@ public class Group {
     @ManyToOne
     @JoinColumn(name = "creatorId")
     private User creator;
-    @Lob
-    private String contactIds;
 
     @ManyToOne
     @JoinColumn(name = "statusId")
     private UserStatus status;
 
-    @ManyToOne
-    @JoinColumn(name ="strategyId")
-    private Strategy strategy;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "group_user", joinColumns = {
+            @JoinColumn(name = "group_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "user_id",
+                    nullable = false, updatable = false) })
+    private List<User> contacts;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "group_strategy", joinColumns = {
+            @JoinColumn(name = "group_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "strategy_id",
+                    nullable = false, updatable = false) })
+    private List<Strategy> strategies;
 
     private String name;
     private Boolean enabled = true;
@@ -45,14 +54,6 @@ public class Group {
 
     public void setCreator(User creator) {
         this.creator = creator;
-    }
-
-    public String getContactIds() {
-        return contactIds;
-    }
-
-    public void setContactIds(String contactIds) {
-        this.contactIds = contactIds;
     }
 
     public String getName() {
@@ -79,12 +80,12 @@ public class Group {
         this.status = status;
     }
 
-    public Strategy getStrategy() {
-        return strategy;
+    public List<Strategy> getStrategies() {
+        return strategies;
     }
 
-    public void setStrategy(Strategy strategy) {
-        this.strategy = strategy;
+    public void setStrategies(List<Strategy> strategies) {
+        this.strategies = strategies;
     }
 
     public Boolean getEnabled() {
@@ -93,5 +94,13 @@ public class Group {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<User> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<User> contacts) {
+        this.contacts = contacts;
     }
 }

@@ -1,4 +1,4 @@
-INSERT INTO `points`.`user`
+INSERT INTO `user`
 (`id`,
  `creationDate`,
  `email`,
@@ -23,7 +23,7 @@ VALUES
     'username'
   );
 
-INSERT INTO `points`.`userstatus`
+INSERT INTO `userstatus`
 (`id`,
  `lastModified`,
  `pingTime`,
@@ -38,44 +38,40 @@ VALUES
     100
   );
 
-INSERT INTO `points`.`strategy`
+INSERT INTO `strategy`
 (`id`,
  `enabled`,
- `strategyType`)
+ `strategyType`,
+ `status_id`,
+ `locationName`,
+ `locationType`)
 VALUES
   (
     100,
     1,
-    'LOCATION'
-  );
-INSERT INTO `points`.`locationstrategy`
-(`locationName`,
- `locationType`,
- `strategyId`)
-VALUES
-  (
+    'LOCATION',
+    100,
     'MUNICH',
-    'CITY',
-    100
+    'CITY'
   );
 
 
 
-INSERT INTO `points`.`groups`
+
+
+
+INSERT INTO `groups`
 (`id`,
- `contactIds`,
  `enabled`,
  `name`,
  `creatorId`,
- `statusId`,
- `strategyId`)
+ `statusId`)
 VALUES
   (
     100,
-    NULL,
     1,
     'testname',
     100,
-    100,
-    100
-  );
+    100);
+
+

@@ -15,6 +15,8 @@ import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import points.group.GroupServiceTest;
 import points.message.MessageServiceTest;
+import points.strategy.StrategyServiceTest;
+import points.user.UserDaoTest;
 
 import java.io.File;
 
@@ -60,11 +62,10 @@ public abstract class AbstractEEDeployment {
         JavaArchive ejb = ShrinkWrap.create(ZipImporter.class, "ejb.jar").importFrom(new File("ejb/target/ejb-1.0-SNAPSHOT.jar"))
                 .as(JavaArchive.class);
         ejb.addClasses(AbstractEEDeployment.class);
-//        ejb.addClasses(EmbeddedMysqlManager.class);
-//        ejb.addClasses(MysqldResource.class);
-//        ejb.addClasses(DatabaseClient.class);
-//        ejb.addClasses(PointsCacheDaoTest.class);
-//        ejb.addClasses(UserDaoTest.class);
+        ejb.addClasses(StrategyServiceTest.class);
+        ejb.addClasses(DatabaseClient.class);
+        ejb.addClasses(PointsCacheDaoTest.class);
+        ejb.addClasses(UserDaoTest.class);
         ejb.addClasses(GroupServiceTest.class);
         ejb.addClasses(MessageServiceTest.class);
         ejb.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");

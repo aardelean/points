@@ -1,12 +1,14 @@
 package points.ejb.user.dao;
 
+import points.ejb.dao.GenericDaoImpl;
 import points.user.dao.UserDao;
 import points.user.dto.User;
-import points.ejb.dao.GenericDaoImpl;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  * Created by aardelean on 19.07.2014.
@@ -19,7 +21,14 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
     @Override
     public User findUserByUserName(String username) {
-        return (User)entityManager.createQuery("FROM User WHERE username:=username").setParameter("username",username).getSingleResult();
+        return (User)entityManager.createQuery("FROM User WHERE username=:username").setParameter("username",username).getSingleResult();
+    }
+
+    @Override
+    public List<User> getUsersWithIds(List<Long> ids) {
+        Query query = entityManager.createQuery("FROM User WHERE id IN(:ids)");
+        query.setParameter("ids",ids);
+        return query.getResultList();
     }
 
 }

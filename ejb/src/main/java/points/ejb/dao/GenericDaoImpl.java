@@ -14,11 +14,12 @@ import java.lang.reflect.ParameterizedType;
 public abstract class GenericDaoImpl<T extends Object> implements GenericDao<T> {
 
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
 
     @Override
-    public void save(T t) {
+    public T save(T t) {
         em.persist(t);
+        return t;
     }
 
     @Override
@@ -36,8 +37,8 @@ public abstract class GenericDaoImpl<T extends Object> implements GenericDao<T> 
     }
 
     @Override
-    public void update(T t) {
-        em.merge(t);
+    public T update(T t) {
+        return em.merge(t);
     }
 
     @Override

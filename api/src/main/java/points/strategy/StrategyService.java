@@ -1,5 +1,10 @@
 package points.strategy;
 
+import points.strategy.dto.LocationBasedStrategy;
+import points.strategy.dto.Strategy;
+import points.strategy.dto.TimeBasedStrategy;
+import points.user.dto.User;
+
 import javax.ejb.Local;
 import java.util.Date;
 import java.util.List;
@@ -11,31 +16,31 @@ import java.util.List;
 @Local
 public interface StrategyService {
 
-    void createDailyTimeStrategy(Date startDate, Date endDate);
+    TimeBasedStrategy createDailyTimeStrategy(User creator,Date startDate, Date endDate);
 
-    void createWeeklyTimeStrategy(Date startDate, Date endDate);
+    TimeBasedStrategy createWeeklyTimeStrategy(User creator,Date startDate, Date endDate);
 
-    void createMonthlyTimeStrategy(Date startDate, Date endDate);
+    TimeBasedStrategy createMonthlyTimeStrategy(User creator,Date startDate, Date endDate);
 
-    void createNonRepeatableTimeStrategy(Date startDate, Date endDate);
+    TimeBasedStrategy createNonRepeatableTimeStrategy(User creator,Date startDate, Date endDate);
 
-    void createCityLocationStrategy(String locationName);
+    LocationBasedStrategy createCityLocationStrategy(User creator,String locationName);
 
-    void createCountryLocationStrategy(String locationName);
+    LocationBasedStrategy createCountryLocationStrategy(User creator,String locationName);
 
-    void deleteTimeStrategy(Long strategyId);
+    void removeTimeStrategy(Long strategyId);
 
-    void deleteLocationStrategy(Long strategyId);
+    void removeLocationStrategy(Long strategyId);
 
-    void updateTimeStrategy(Long strategyId, Date startDate, Date endDate, String timeStrategyType);
+    TimeBasedStrategy updateTimeStrategy(Long strategyId, Date startDate, Date endDate, String timeStrategyType);
 
-    void updateLocationStrategy(Long strategyId, String location, String locationType);
+    LocationBasedStrategy updateLocationStrategy(Long strategyId, String location, String locationType);
 
-    void disableStrategy(Long strategyId);
+    Strategy disableStrategy(Long strategyId);
 
-    void enableStrategy(Long strategyId);
+    Strategy enableStrategy(Long strategyId);
 
-    void addGroups(Long strategyId, List<Long> groupIds);
+    Strategy addGroups(Long strategyId, List<Long> groupIds);
 
-    void removeGroups(Long strategyId, List<Long> groupIds);
+    Strategy removeGroups(Long strategyId, List<Long> groupIds);
 }

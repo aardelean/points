@@ -1,4 +1,4 @@
-package points.ejb.user;
+package points.ejb.user.service;
 
 import points.group.dao.GroupDao;
 import points.group.dao.GroupMessageDao;
@@ -34,21 +34,23 @@ public class MessageServiceImpl implements MessageService {
     private GroupDao groupDao;
 
     @Override
-    public void createAndSendGroupMessage(Long senderId, Long groupId, String content, String location) {
+    public Message createAndSendGroupMessage(Long senderId, Long groupId, String content, String location) {
         GroupMessage groupMessage = new GroupMessage();
         Group receiver = groupDao.findById(groupId);
         groupMessage.setGroup(receiver);
         populateMessage(groupMessage,senderId,content, location);
         groupMessageDao.save(groupMessage);
+        return groupMessage;
     }
 
     @Override
-    public void createAndSendUserMessage(Long senderId, Long receiverId, String content, String location) {
+    public UserMessage createAndSendUserMessage(Long senderId, Long receiverId, String content, String location) {
         UserMessage userMessage = new UserMessage();
         User receiver = userDao.findById(receiverId);
         userMessage.setUser(receiver);
         populateMessage(userMessage,senderId,content, location);
         userMessageDao.save(userMessage);
+        return userMessage;
     }
 
     private void populateMessage(Message message, Long senderId, String content, String location){

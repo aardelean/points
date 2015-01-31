@@ -16,6 +16,11 @@
             <groupId>points</groupId>
             <artifactId>api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>points</groupId>
+            <artifactId>transport</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--jee-->
         <dependency>
             <groupId>javax</groupId>

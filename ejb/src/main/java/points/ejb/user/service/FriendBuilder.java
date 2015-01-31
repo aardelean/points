@@ -1,6 +1,6 @@
-package points.ejb.user;
+package points.ejb.user.service;
 
-import points.user.dto.Friend;
+import points.user.dto.ContactCollection;
 import points.user.dto.SocialProvider;
 import points.user.dto.User;
 
@@ -11,7 +11,7 @@ public class FriendBuilder {
     private User user;
     private SocialProvider provider;
     private String friendsIds;
-    private Friend friend;
+    private ContactCollection contactCollection;
 
     public FriendBuilder user(User user){
         this.user = user;
@@ -26,13 +26,13 @@ public class FriendBuilder {
         return this;
     }
 
-    public Friend build(){
-        friend = new Friend();
+    public ContactCollection build(){
+        contactCollection = new ContactCollection();
 
-        friend.setUser(user);
-        friend.setProvider(provider);
-        friend.setFriendsIds(friendsIds);
+        contactCollection.setUser(user);
+        contactCollection.setSource(provider);
+        contactCollection.setContactIds(friendsIds.getBytes());
 
-        return friend;
+        return contactCollection;
     }
 }

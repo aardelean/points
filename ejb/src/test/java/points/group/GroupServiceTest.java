@@ -46,7 +46,7 @@ public class GroupServiceTest extends AbstractEEDeployment{
         Group group = (Group)query.getSingleResult();
         Assert.assertTrue(group.getEnabled());
         Assert.assertEquals("defaultName", group.getName());
-        Assert.assertNotNull(group.getContactIds());
+        Assert.assertNotNull(group.getContacts());
     }
 
     @Test

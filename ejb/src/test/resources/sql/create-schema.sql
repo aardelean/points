@@ -1,149 +1,148 @@
-    create table GroupMessage (
-        type varchar(31) not null,
-        id bigint not null auto_increment,
-        content varchar(255),
-        location varchar(255),
-        time datetime,
-        issuer_id bigint,
-        groupId bigint,
-        primary key (id)
-    );
+CREATE TABLE `contactcollection` (
+  `id` bigint(20) NOT NULL,
+  `contactIds` mediumblob,
+  `source` varchar(255) DEFAULT NULL,
+  `user_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_g4h4hck1gdod7ih1l7dpqmtr6` (`user_id`),
+  CONSTRAINT `FK_g4h4hck1gdod7ih1l7dpqmtr6` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    create table UserMessage (
-        type varchar(31) not null,
-        id bigint not null auto_increment,
-        content varchar(255),
-        location varchar(255),
-        time datetime,
-        issuer_id bigint,
-        userId bigint,
-        primary key (id)
-    );
 
-    create table friend (
-        id bigint not null auto_increment,
-        friendsIds varchar(255),
-        provider varchar(255),
-        userId bigint,
-        primary key (id)
-    );
+  
 
-    create table groups (
-        id bigint not null auto_increment,
-        contactIds longtext,
-        enabled bit,
-        name varchar(255),
-        creatorId bigint,
-        statusId bigint,
-        strategyId bigint,
-        primary key (id)
-    );
+CREATE TABLE `group_strategy` (
+  `group_id` bigint(20) NOT NULL,
+  `strategy_id` bigint(20) NOT NULL,
+  KEY `FK_kw51irtffyupfv6vxjlpsvnk3` (`strategy_id`),
+  KEY `FK_n0sst4afsrqc3mu71l6oqx48v` (`group_id`),
+  CONSTRAINT `FK_kw51irtffyupfv6vxjlpsvnk3` FOREIGN KEY (`strategy_id`) REFERENCES `strategy` (`id`),
+  CONSTRAINT `FK_n0sst4afsrqc3mu71l6oqx48v` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    create table locationStrategy (
-        locationName varchar(255),
-        locationType varchar(255),
-        strategyId bigint not null,
-        primary key (strategyId)
-    );
 
-    create table point (
-        id bigint not null auto_increment,
-        latitude varchar(255),
-        longitude varchar(255),
-        time datetime,
-        primary key (id)
-    );
+  
 
-    create table strategy (
-        id bigint not null auto_increment,
-        enabled bit not null,
-        strategyType varchar(255),
-        primary key (id)
-    );
+CREATE TABLE `group_user` (
+  `group_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  KEY `FK_ns02np32pqhrbm8cwpifjerp9` (`user_id`),
+  KEY `FK_dx4jv6mpv63ufnjl3a7pec1vo` (`group_id`),
+  CONSTRAINT `FK_dx4jv6mpv63ufnjl3a7pec1vo` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`),
+  CONSTRAINT `FK_ns02np32pqhrbm8cwpifjerp9` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    create table timeStrategy (
-        enabled bit not null,
-        endTime datetime,
-        startTime datetime,
-        timeStrategyType varchar(255),
-        strategyId bigint not null,
-        primary key (strategyId)
-    );
 
-    create table user (
-        id bigint not null auto_increment,
-        creationDate datetime,
-        email varchar(255),
-        firstName varchar(255),
-        lastModifiedDate datetime,
-        lastName varchar(255),
-        password varchar(255),
-        phoneNo varchar(255),
-        socialProvider varchar(255),
-        username varchar(255),
-        primary key (id)
-    );
+  
 
-    create table userStatus (
-        id bigint not null auto_increment,
-        lastModified datetime,
-        pingTime integer,
-        type varchar(255),
-        userId bigint,
-        primary key (id)
-    );
+CREATE TABLE `groupmessage` (
+  `type` varchar(31) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `issuer_id` bigint(20) DEFAULT NULL,
+  `groupId` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_k6xwpg1fk6nb1882m6rprrp26` (`issuer_id`),
+  KEY `FK_r52pqe3tatkn4qi44atfw3nx5` (`groupId`),
+  CONSTRAINT `FK_k6xwpg1fk6nb1882m6rprrp26` FOREIGN KEY (`issuer_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_r52pqe3tatkn4qi44atfw3nx5` FOREIGN KEY (`groupId`) REFERENCES `groups` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    alter table GroupMessage 
-        add constraint FK_qcgoqiikpt3otjuyg2bic9tfw 
-        foreign key (issuer_id) 
-        references user (id);
 
-    alter table GroupMessage 
-        add constraint FK_50sqnje4tu9qw9lm9d6qs3nx5 
-        foreign key (groupId) 
-        references groups (id);
+  
 
-    alter table UserMessage 
-        add constraint FK_s08cwilcdu1pt6saotxdtg97u 
-        foreign key (issuer_id) 
-        references user (id);
+CREATE TABLE `groups` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `enabled` bit(1) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `creatorId` bigint(20) DEFAULT NULL,
+  `statusId` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_9pn6xmauj25gb7ta8hjjbtmlb` (`creatorId`),
+  KEY `FK_1262g80reyrhut3mfy0ldf9xo` (`statusId`),
+  CONSTRAINT `FK_1262g80reyrhut3mfy0ldf9xo` FOREIGN KEY (`statusId`) REFERENCES `userstatus` (`id`),
+  CONSTRAINT `FK_9pn6xmauj25gb7ta8hjjbtmlb` FOREIGN KEY (`creatorId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    alter table UserMessage 
-        add constraint FK_qf1partsbcmvs2i2hmr1qxqpw 
-        foreign key (userId) 
-        references user (id);
 
-    alter table friend 
-        add constraint FK_5w93st3rg8803m8r8d973temq 
-        foreign key (userId) 
-        references user (id);
+  
 
-    alter table groups 
-        add constraint FK_9pn6xmauj25gb7ta8hjjbtmlb 
-        foreign key (creatorId) 
-        references user (id);
+CREATE TABLE `point` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `latitude` varchar(255) DEFAULT NULL,
+  `longitude` varchar(255) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    alter table groups 
-        add constraint FK_1262g80reyrhut3mfy0ldf9xo 
-        foreign key (statusId) 
-        references userStatus (id);
 
-    alter table groups 
-        add constraint FK_3bied2ytdljd5cmiolnccf861 
-        foreign key (strategyId) 
-        references strategy (id);
+  
 
-    alter table locationStrategy 
-        add constraint FK_2ippg53xyc3llko4il1sebuuv 
-        foreign key (strategyId) 
-        references strategy (id);
+CREATE TABLE `strategy` (
+  `strategyType` varchar(31) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `enabled` bit(1) NOT NULL,
+  `endTime` datetime DEFAULT NULL,
+  `startTime` datetime DEFAULT NULL,
+  `timeStrategyType` varchar(255) DEFAULT NULL,
+  `locationName` varchar(255) DEFAULT NULL,
+  `locationType` varchar(255) DEFAULT NULL,
+  `status_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_lel23d43e54tx5sn1tulia7q7` (`status_id`),
+  CONSTRAINT `FK_lel23d43e54tx5sn1tulia7q7` FOREIGN KEY (`status_id`) REFERENCES `userstatus` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-    alter table timeStrategy 
-        add constraint FK_oglhnxf0jx8dl3gkgvcir9wi2 
-        foreign key (strategyId) 
-        references strategy (id);
 
-    alter table userStatus 
-        add constraint FK_4x8kuyxn9aqi07ik4nbs9v7r4 
-        foreign key (userId) 
-        references user (id);
+  
+
+CREATE TABLE `user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `creationDate` datetime DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstName` varchar(255) DEFAULT NULL,
+  `lastModifiedDate` datetime DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `phoneNo` varchar(255) DEFAULT NULL,
+  `socialProvider` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+  
+
+CREATE TABLE `usermessage` (
+  `type` varchar(31) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  `issuer_id` bigint(20) DEFAULT NULL,
+  `userId` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_mpoqw7p4wfm1gqaf6ywp7xlkl` (`issuer_id`),
+  KEY `FK_id4yajjm0o0f1ejm8egc7d6x4` (`userId`),
+  CONSTRAINT `FK_id4yajjm0o0f1ejm8egc7d6x4` FOREIGN KEY (`userId`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_mpoqw7p4wfm1gqaf6ywp7xlkl` FOREIGN KEY (`issuer_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+  
+
+CREATE TABLE `userstatus` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `lastModified` datetime DEFAULT NULL,
+  `pingTime` int(11) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `userId` bigint(20) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_4x8kuyxn9aqi07ik4nbs9v7r4` (`userId`),
+  CONSTRAINT `FK_4x8kuyxn9aqi07ik4nbs9v7r4` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+

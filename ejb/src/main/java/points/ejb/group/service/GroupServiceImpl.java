@@ -1,4 +1,4 @@
-package points.ejb.group;
+package points.ejb.group.service;
 
 import points.group.GroupService;
 import points.group.dao.GroupDao;
@@ -33,7 +33,7 @@ public class GroupServiceImpl implements GroupService {
     private UserStatusDao userStatusDao;
 
     @Override
-    public void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType, Integer pingTime) {
+    public Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType, Integer pingTime) {
         User creator = userDao.findById(creatorId);
         Group group = groupFactory.createGroup(creator, name, friendIds);
         group.setEnabled(enabled);
@@ -48,52 +48,66 @@ public class GroupServiceImpl implements GroupService {
         group.setStatus(userStatus);
 
         groupDao.save(group);
+        return group;
     }
 
     @Override
-    public void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType) {
-        addGroup(friendIds,creatorId,name, enabled,userStatusType,groupFactory.defaultPingTime);
+    public Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled, String userStatusType) {
+        return addGroup(friendIds,creatorId,name, enabled,userStatusType,groupFactory.defaultPingTime);
     }
 
     @Override
-    public void addGroup(List<Long> friendIds, Long creatorId, String name, String userStatusType) {
-        addGroup(friendIds,creatorId,name, groupFactory.defaultEnabled,userStatusType,groupFactory.defaultPingTime);
+    public Group addGroup(List<Long> friendIds, Long creatorId, String name, String userStatusType) {
+        return addGroup(friendIds,creatorId,name, groupFactory.defaultEnabled,userStatusType,groupFactory.defaultPingTime);
     }
 
     @Override
-    public void addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled) {
-        addGroup(friendIds,creatorId,name, enabled, null,groupFactory.defaultPingTime);
+    public Group addGroup(List<Long> friendIds, Long creatorId, String name, Boolean enabled) {
+        return addGroup(friendIds,creatorId,name, enabled, null,groupFactory.defaultPingTime);
     }
 
     @Override
-    public void addGroup(List<Long> friendIds, Long creatorId, String name) {
-        addGroup(friendIds,creatorId,name, groupFactory.defaultEnabled, null,groupFactory.defaultPingTime);
+    public Group addGroup(List<Long> friendIds, Long creatorId, String name) {
+        return addGroup(friendIds,creatorId,name, groupFactory.defaultEnabled, null,groupFactory.defaultPingTime);
     }
 
     @Override
-    public void changeStatus(Long userStatusId, Long groupId) {
+    public Group changeStatus(Long userStatusId, Long groupId) {
         Group group = groupDao.findById(groupId);
         UserStatus status = userStatusDao.findById(userStatusId);
         group.setStatus(status);
         status.getGroups().add(group);
         groupDao.update(group);
         userStatusDao.update(status);
+        return group;
     }
 
     @Override
-    public void changeStatus(Long creatorId, UserStatusType userStatusType, Long groupId) {
+    public Group changeStatus(Long creatorId, UserStatusType userStatusType, Long groupId) {
         Group group = groupDao.findById(groupId);
-        UserStatus status = createUserStatus(creatorId, userStatusType);
+        UserStatus status = group.getStatus();
+        if(status==null || status.getGroups().size()>1){
+            status = createUserStatus(creatorId, userStatusType);
+        }else{
+            status.setType(userStatusType);
+        }
         status.setGroups(new ArrayList<Group>());
         status.getGroups().add(group);
         userStatusDao.update(status);
         group.setStatus(status);
         groupDao.update(group);
+        return group;
     }
 
     @Override
-    public void addUserStatus(Long creatorId, UserStatusType userStatusType) {
-        createUserStatus(creatorId, userStatusType);
+    public UserStatus addUserStatus(Long creatorId, UserStatusType userStatusType) {
+        return createUserStatus(creatorId, userStatusType);
+    }
+
+    @Override
+    public void removeGroup(Long groupId) {
+        Group group = groupDao.findById(groupId);
+        groupDao.delete(group);
     }
 
     private UserStatus createUserStatus(Long creatorId, UserStatusType userStatusType){
@@ -102,6 +116,5 @@ public class GroupServiceImpl implements GroupService {
         userStatusDao.save(status);
         return status;
     }
-
 
 }

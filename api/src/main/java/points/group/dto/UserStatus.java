@@ -1,5 +1,6 @@
 package points.group.dto;
 
+import points.strategy.dto.Strategy;
 import points.user.dto.User;
 
 import javax.persistence.*;
@@ -17,12 +18,17 @@ public class UserStatus {
     @GeneratedValue
     private Long id;
 
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
     @OneToMany(mappedBy = "status")
     private List<Group> groups;
+
+    @OneToMany(mappedBy = "userStatus")
+    private List<Strategy> strategies;
 
     @Enumerated(EnumType.STRING)
     private UserStatusType type;
@@ -77,5 +83,21 @@ public class UserStatus {
 
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Strategy> getStrategies() {
+        return strategies;
+    }
+
+    public void setStrategies(List<Strategy> strategies) {
+        this.strategies = strategies;
     }
 }

@@ -1,6 +1,5 @@
-package points.ejb.group;
+package points.ejb.group.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -8,9 +7,11 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import points.group.dto.Group;
 import points.group.dto.UserStatus;
 import points.group.dto.UserStatusType;
+import points.user.dao.UserDao;
 import points.user.dto.User;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,8 @@ import java.util.Set;
 @Singleton
 public class GroupFactory {
 
+    @EJB
+    private UserDao userDao;
 
     private ObjectWriter writer;
 
@@ -80,10 +83,9 @@ public class GroupFactory {
         group.setCreator(creator);
         group.setEnabled(defaultEnabled);
         group.setStatus(createUserStatus(creator));
-        try {
-            group.setContactIds(writer.writeValueAsString(contactsIds));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("could not serialize contactsIds", e);
+        if(contactsIds!=null && !contactsIds.isEmpty()){
+            List<User> users = userDao.getUsersWithIds(contactsIds);
+            group.setContacts(users);
         }
         return group;
     }

@@ -92,8 +92,9 @@ public class DatabaseClient {
 
     public void run(String fileName) throws SQLException, IOException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         InputStream sqlStream = DatabaseClient.class.getClassLoader().getResourceAsStream(fileName);
+        Statement statement = null;
         try {
-            final Statement statement = getConnection().createStatement();
+            statement = getConnection().createStatement();
             List<String> sqlFragments = createSqlfragments(sqlStream);
             for (String toRun : sqlFragments) {
                 if (toRun.length() > 0) {
@@ -105,6 +106,10 @@ public class DatabaseClient {
             if(sqlStream!=null){
                 IOUtils.closeQuietly(sqlStream);
             }
+            if(statement!=null){
+                statement.close();
+            }
+
         }
     }
 

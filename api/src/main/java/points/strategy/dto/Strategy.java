@@ -1,28 +1,30 @@
 package points.strategy.dto;
 
 import points.group.dto.Group;
-import points.user.dto.User;
+import points.group.dto.UserStatus;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by aardelean on 14.09.2014.
+ * Created by aardelean on 24.12.2014.
  */
 @Entity
 @Table(name="strategy")
-public class Strategy  implements Serializable{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "strategyType", discriminatorType=DiscriminatorType.STRING)
+public class Strategy {
     @Id
     @GeneratedValue
     private Long id;
-    @Enumerated(EnumType.STRING)
-    private StrategyType strategyType;
 
     private boolean enabled;
 
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name="status_id")
+    private UserStatus userStatus;
 
-    @OneToMany(mappedBy = "strategy")
+    @ManyToMany(mappedBy = "strategies", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<Group> groups;
 
     public Long getId() {
@@ -31,14 +33,6 @@ public class Strategy  implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public StrategyType getStrategyType() {
-        return strategyType;
-    }
-
-    public void setStrategyType(StrategyType strategyType) {
-        this.strategyType = strategyType;
     }
 
     public boolean isEnabled() {
@@ -55,5 +49,13 @@ public class Strategy  implements Serializable{
 
     public void setGroups(List<Group> groups) {
         this.groups = groups;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
     }
 }

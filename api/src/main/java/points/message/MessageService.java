@@ -1,5 +1,7 @@
 package points.message;
 
+import points.message.dto.Message;
+
 import javax.ejb.Local;
 
 /**
@@ -9,7 +11,7 @@ import javax.ejb.Local;
 @Local
 public interface MessageService {
 
-    void createAndSendGroupMessage(Long senderId,Long groupId, String content, String location);
+    Message createAndSendGroupMessage(Long senderId,Long groupId, String content, String location);
 
-    void createAndSendUserMessage(Long senderId,Long receiverId, String content, String location);
+    Message createAndSendUserMessage(Long senderId,Long receiverId, String content, String location);
 }

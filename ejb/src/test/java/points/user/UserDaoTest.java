@@ -23,10 +23,10 @@ public class UserDaoTest extends AbstractEEDeployment{
         user.setLastName("lastname");
         user.setEmail("email");
         user.setPassword("password");
-        user.setUsername("username");
+        user.setUsername("username_test");
         userDao.save(user);
 
-        User found = userDao.findUserByUserName("username");
+        User found = userDao.findUserByUserName("username_test");
         Assert.assertNotNull(found);
         Assert.assertEquals("email",user.getEmail());
     }

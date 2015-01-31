@@ -12,7 +12,7 @@ import points.point.dto.Point;
 import points.strategy.dto.LocationBasedStrategy;
 import points.strategy.dto.Strategy;
 import points.strategy.dto.TimeBasedStrategy;
-import points.user.dto.Friend;
+import points.user.dto.ContactCollection;
 import points.user.dto.User;
 
 public class HibernateDDLGenerator {
@@ -31,7 +31,7 @@ public class HibernateDDLGenerator {
         configuration.addAnnotatedClass(Strategy.class);
         configuration.addAnnotatedClass(TimeBasedStrategy.class);
         configuration.addAnnotatedClass(User.class);
-        configuration.addAnnotatedClass(Friend.class);
+        configuration.addAnnotatedClass(ContactCollection.class);
 
 
 

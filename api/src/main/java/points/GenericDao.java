@@ -10,14 +10,14 @@ import java.io.Serializable;
 @Local
 public interface GenericDao<T extends Object> {
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
-    void save(T t);
+    @Transactional(Transactional.TxType.REQUIRED)
+    T save(T t);
 
     T findById(Serializable id);
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
-    void update(T t);
+    @Transactional(Transactional.TxType.REQUIRED)
+    T update(T t);
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    @Transactional(Transactional.TxType.REQUIRED)
     void delete(T t);
 }
