@@ -2,8 +2,8 @@ package points;
 
 import org.junit.Assert;
 import org.junit.Test;
-import points.dao.points.PointCacheDaoLocal;
-import points.dto.point.Point;
+import points.point.dao.PointCacheDaoLocal;
+import points.point.dto.Point;
 
 import javax.inject.Inject;
 
