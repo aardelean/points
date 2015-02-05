@@ -1,12 +1,13 @@
 package points.user;
 
+import javax.inject.Inject;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import points.AbstractEEDeployment;
 import points.user.dao.UserDao;
 import points.user.dto.User;
-
-import javax.inject.Inject;
 
 /**
  * Created by aardelean on 04.10.2014.

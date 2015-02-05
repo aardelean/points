@@ -3,10 +3,17 @@
              xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    <persistence-unit name="test-jpa" transaction-type="JTA">
-
+    <persistence-unit name="persist" transaction-type="JTA">
         <jta-data-source>java:jboss/datasources/pointsDS-test</jta-data-source>
-
+        <class>points.group.dto.Group</class>
+        <class>points.group.dto.UserStatus</class>
+        <class>points.message.dto.GroupMessage</class>
+        <class>points.message.dto.UserMessage</class>
+        <class>points.strategy.dto.LocationBasedStrategy</class>
+        <class>points.strategy.dto.TimeBasedStrategy</class>
+        <class>points.user.dto.User</class>
+        <class>points.user.dto.ContactCollection</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.transaction.jta.platform"
                       value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
@@ -15,6 +22,18 @@
             <property name="hibernate.hbm2ddl.auto" value="validate" />
 
             <property name="hibernate.id.new_generator_mappings" value="false" />
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="volatile" transaction-type="RESOURCE_LOCAL">
+        <!-- Use Hibernate OGM provider: configuration will be transparent -->
+        <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+        <class>points.point.dto.Point</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <!--&lt;!&ndash; defines which JTA Transaction we plan to use &ndash;&gt;-->
+            <!--<property name="hibernate.transaction.jta.platform"-->
+                      <!--value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform"/>-->
+            <!--<property name="hibernate.search.infinispan.configuration_resourcename" value="infinispan.xml"/>-->
         </properties>
     </persistence-unit>
 

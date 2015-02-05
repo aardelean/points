@@ -23,7 +23,7 @@ public class MessageServiceTest extends AbstractEEDeployment{
     @Inject
     private MessageService classUnderTest;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "persist")
     private EntityManager em;
 
     @Test

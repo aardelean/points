@@ -1,10 +1,10 @@
 package points.facade;
 
+import javax.ejb.Stateless;
+
 import points.strategy.StrategyFacade;
 import points.strategy.dto.Strategy;
 import points.transport.strategy.StrategyTransport;
-
-import javax.ejb.Stateless;
 
 /**
  * Created by aardelean on 28.12.2014.

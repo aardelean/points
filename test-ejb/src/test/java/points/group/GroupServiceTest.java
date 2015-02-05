@@ -1,20 +1,22 @@
 package points.group;
 
-import org.junit.Assert;
-import org.junit.Test;
-import points.AbstractEEDeployment;
-import points.group.dto.Group;
-import points.group.dto.UserStatus;
-import points.group.dto.UserStatusType;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import points.AbstractEEDeployment;
+import points.group.dto.Group;
+import points.group.dto.UserStatus;
+import points.group.dto.UserStatusType;
 
 /**
  * Created by aardelean on 30.09.2014.
@@ -23,7 +25,7 @@ public class GroupServiceTest extends AbstractEEDeployment{
     @Inject
     private GroupService classUnderTest;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "persist")
     private EntityManager em;
 
     private static final Long CREATOR_ID=100L;

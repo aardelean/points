@@ -1,18 +1,20 @@
 package points.strategy;
 
+import java.util.Date;
+
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.junit.Assert;
 import org.junit.Test;
+
 import points.AbstractEEDeployment;
 import points.strategy.dto.LocationBasedStrategy;
 import points.strategy.dto.LocationType;
 import points.strategy.dto.TimeBasedStrategy;
 import points.strategy.dto.TimeStrategyType;
 import points.user.dto.User;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.Date;
 
 /**
  * Created by aardelean on 22.11.2014.
@@ -24,7 +26,7 @@ public class StrategyServiceTest extends AbstractEEDeployment{
     @Inject
     private StrategyService strategyService;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "persist")
     private EntityManager em;
 
     @Test
