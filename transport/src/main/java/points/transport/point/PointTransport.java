@@ -1,31 +1,32 @@
 package points.transport.point;
 
-import points.transport.AbstractTransportEntity;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import points.transport.AbstractTransportEntity;
 
 /**
  * Created by aardelean on 13.12.2014.
  */
 public class PointTransport extends AbstractTransportEntity implements Serializable{
-    private String longitude;
-    private String latitude;
+    private Double longitude;
+    private Double latitude;
     private Date time;
+	private Long userId;
 
-    public String getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
@@ -36,4 +37,12 @@ public class PointTransport extends AbstractTransportEntity implements Serializa
     public void setTime(Date time) {
         this.time = time;
     }
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 }

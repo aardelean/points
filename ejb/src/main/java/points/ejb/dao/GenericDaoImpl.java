@@ -1,19 +1,20 @@
 package points.ejb.dao;
 
-import points.GenericDao;
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
+
+import points.GenericDao;
 
 /**
  * Created by aardelean on 04.10.2014.
  */
 public abstract class GenericDaoImpl<T extends Object> implements GenericDao<T> {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "persist")
     protected EntityManager em;
 
     @Override
