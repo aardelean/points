@@ -23,7 +23,7 @@ import org.hibernate.search.annotations.Store;
  */
 @Entity
 @Table(name="Point")
-@Spatial(spatialMode = SpatialMode.HASH)
+@Spatial(spatialMode = SpatialMode.RANGE)
 @Indexed(index = "indexes/point_user")
 public class Point {
     @Id @GeneratedValue(generator = "uuid")

@@ -18,7 +18,6 @@
         <dependency>
             <groupId>points</groupId>
             <artifactId>transport</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!--jee-->
         <dependency>
@@ -58,33 +57,5 @@
             <artifactId>hibernate-search-infinispan</artifactId>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
-                <configuration>
-                    <!-- Fork every test because it will launch a separate AS instance -->
-                    <forkMode>always</forkMode>
-                    <systemPropertyVariables>
-                        <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-                        <!-- the maven dependency plugin will have already downloaded the server on /target -->
-                        <jboss.home>d:/install/wildfly-8.1.0.Final</jboss.home>
-                        <module.path>d:/install/wildfly-8.1.0.Final/modules</module.path>
-                    </systemPropertyVariables>
-                    <redirectTestOutputToFile>false</redirectTestOutputToFile>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

@@ -4,19 +4,21 @@
         xsi:schemaLocation="urn:infinispan:config:7.0 http://www.infinispan.org/schemas/infinispan-config-7.0.xsd"
         xmlns="urn:infinispan:config:7.0">
 
-    <global>
-    </global>
+    <cache-container name="cacheContainer" default-cache="Point">
 
-    <default>
-    </default>
+        <local-cache name="Point">
+            <transaction mode="NON_DURABLE_XA"
+                         transaction-manager-lookup="org.infinispan.transaction.lookup.JBossStandaloneJTAManagerLookup"/>
+            <eviction strategy="LIRS" max-entries="2000"/>
+            <persistence passivation="true">
+                <file-store
+                        shared="false"
+                        path="d:/infinispan/points">
+                    <write-behind flush-lock-timeout="15000" thread-pool-size="5" />
+                </file-store>
+            </persistence>
+        </local-cache>
 
-    <namedCache name="ENTITIES">
-    </namedCache>
-
-    <namedCache name="ASSOCIATIONS">
-    </namedCache>
-
-    <namedCache name="IDENTIFIERS">
-    </namedCache>
+    </cache-container>
 
 </infinispan>

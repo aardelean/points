@@ -6,5 +6,7 @@ Dependencies: org.hibernate:ogm services,
  org.hibernate.search.infinispan-storage:ispn-7.0 export,
  org.infinispan:ispn-7.0 services,
  org.infinispan:ispn-7.0 export,
- org.hibernate.hql:1.1.0.Final services
+ org.hibernate.hql:1.1.0.Final services,
+ com.mysql export,
+ org.keycloak.keycloak-undertow-adapter import
 
