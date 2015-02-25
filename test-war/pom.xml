@@ -11,57 +11,18 @@
     <packaging>war</packaging>
     <artifactId>test-war</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.arquillian.protocol</groupId>
-            <artifactId>arquillian-protocol-servlet</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-arquillian-container-embedded</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.extension</groupId>
-            <artifactId>arquillian-transaction-jta</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-embedded</artifactId>
-            <version>8.1.0.Final</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>compile</scope>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-mxj</artifactId>-->
-            <!--<version>5.0.12</version>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-mxj-db-files</artifactId>-->
-            <!--<version>5.0.12</version>-->
-            <!--<scope>compile</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-mxj</artifactId>
+            <version>5.0.12</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
     <dependencyManagement>
@@ -100,8 +61,8 @@
             <systemPropertyVariables>
                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                 <!-- the maven dependency plugin will have already downloaded the server on /target -->
-                <jboss.home>d:/install/wildfly-8.1.0.Final</jboss.home>
-                <module.path>d:/install/wildfly-8.1.0.Final/modules</module.path>
+                <jboss.home>d:/install/wildfly</jboss.home>
+                <module.path>d:/install/wildfly/modules</module.path>
             </systemPropertyVariables>
             <redirectTestOutputToFile>false</redirectTestOutputToFile>
         </configuration>

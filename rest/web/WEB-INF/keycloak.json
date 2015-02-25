@@ -1,0 +1,13 @@
+{
+    "realm": "coordinatesRealm",
+    "realm-public-key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZFcmbsvYily6As7TQxRGvF7kR4DrP/ZXsOIaPcdHZbPIrqH8dbvULVVxCacUL5NB7TbLO+mVob0tcIyqdrK2az5luOEfmPPo5j0YCQijJEqFd4c6sPZvRzPsGisoNSP2t586LpqxwcLVWd2ibs6xe6ZESoP36x6//RzIOOeO2UQIDAQAB",
+    "auth-server-url": "https://localhost:8443/auth",
+    "ssl-required": "external",
+    "resource": "points",
+    "credentials": {
+        "secret": "5c8d4adc-2e48-44ca-ace7-6c94bf3844da"
+    },
+    "use-resource-role-mappings": true,
+    "connection-pool-size" : 20,
+    "disable-trust-manager": true
+}

@@ -7,33 +7,41 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Latitude;
 import org.hibernate.search.annotations.Longitude;
 import org.hibernate.search.annotations.Spatial;
 import org.hibernate.search.annotations.SpatialMode;
+import org.hibernate.search.annotations.Store;
 
 /**
  * Created by aardelean on 14.09.2014.
  */
 @Entity
-@Table(name="point")
-@Spatial(spatialMode = SpatialMode.HASH)
+@Table(name="Point")
+@Spatial(spatialMode = SpatialMode.RANGE)
+@Indexed(index = "indexes/point_user")
 public class Point {
-    @Id
-    @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue(generator = "uuid")
+	@GenericGenerator(name="uuid", strategy="uuid2")
+	private String id;
 	@Longitude
     private Double longitude;
 	@Latitude
     private Double latitude;
     private Date time;
+	@Field(analyze = Analyze.NO, index = Index.YES, store = Store.YES)
 	private Long userId;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

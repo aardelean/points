@@ -1,24 +1,19 @@
 package points.ejb.user.dao;
 
+import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
+
 import points.ejb.dao.GenericDaoImpl;
 import points.user.dao.FriendDao;
 import points.user.dto.ContactCollection;
 import points.user.dto.SocialProvider;
-
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  * Created by aardelean on 25.10.2014.
  */
 @Stateless
 public class FriendDaoImpl extends GenericDaoImpl<ContactCollection> implements FriendDao{
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Override
     public ContactCollection findByUserIdAndSocialProvider(Long userId, SocialProvider socialProvider) {
