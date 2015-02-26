@@ -43,11 +43,38 @@
                             <bundleFileName>client.war</bundleFileName>
                             <contextRoot>/client</contextRoot>
                         </webModule>
+                        <webModule>
+                            <groupId>points</groupId>
+                            <artifactId>socialProvider</artifactId>
+                            <bundleFileName>socialProvider.war</bundleFileName>
+                            <contextRoot>/socialProvider</contextRoot>
+                        </webModule>
+                        <webModule>
+                            <groupId>points</groupId>
+                            <artifactId>rest</artifactId>
+                            <bundleFileName>rest.war</bundleFileName>
+                            <contextRoot>/rest</contextRoot>
+                        </webModule>
                         <ejbModule>
                             <groupId>points</groupId>
                             <artifactId>ejb</artifactId>
                             <bundleFileName>ejb.jar</bundleFileName>
                         </ejbModule>
+                        <ejbModule>
+                            <groupId>points</groupId>
+                            <artifactId>coordinates</artifactId>
+                            <bundleFileName>coordinates.jar</bundleFileName>
+                        </ejbModule>
+                        <ejbModule>
+                            <groupId>points</groupId>
+                            <artifactId>facade</artifactId>
+                            <bundleFileName>facade.jar</bundleFileName>
+                        </ejbModule>
+                        <!--<archive>-->
+                            <!--<manifestEntries>-->
+                                <!--<Dependencies>org.infinispan.commons export</Dependencies>-->
+                            <!--</manifestEntries>-->
+                        <!--</archive>-->
                     </modules>
                     <displayName>ejb-ee</displayName>
                     <!-- If I want maven to generate the application.xml, set this to true -->
@@ -65,17 +92,56 @@
         <finalName>points</finalName>
     </build>
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-search-orm</artifactId>-->
+            <!--&lt;!&ndash;<scope>compile</scope>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-entitymanager</artifactId>-->
+            <!--&lt;!&ndash;<scope>compile</scope>&ndash;&gt;-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-search-infinispan</artifactId>-->
+            <!--&lt;!&ndash;<scope>compile</scope>&ndash;&gt;-->
+        <!--</dependency>-->
         <dependency>
             <groupId>points</groupId>
             <artifactId>client</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>points</groupId>
+            <artifactId>socialProvider</artifactId>
+            <version>${project.version}</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>points</groupId>
             <artifactId>ejb</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${project.version}</version>
             <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>points</groupId>
+            <artifactId>coordinates</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>points</groupId>
+            <artifactId>facade</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>points</groupId>
+            <artifactId>rest</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
         </dependency>
     </dependencies>
 

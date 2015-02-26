@@ -23,4 +23,23 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
+    <!-- rest -->
+    <!--<servlet>-->
+        <!--<servlet-name>Resteasy</servlet-name>-->
+        <!--<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>-->
+        <!--<init-param>-->
+            <!--<param-name>javax.ws.rs.Application</param-name>-->
+            <!--<param-value>point.client.config.RestApplication</param-value>-->
+        <!--</init-param>-->
+        <!--<init-param>-->
+            <!--<param-name>resteasy.scan</param-name>-->
+            <!--<param-value>true</param-value>-->
+        <!--</init-param>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Resteasy</servlet-name>-->
+        <!--<url-pattern>/rest</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>
