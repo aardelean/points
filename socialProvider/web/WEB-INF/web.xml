@@ -13,11 +13,11 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>User</web-resource-name>
+            <web-resource-name>Friends</web-resource-name>
             <url-pattern>/socialProvider/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>coordinatesUsers</role-name>
+            <role-name>points-role</role-name>
         </auth-constraint>
     </security-constraint>
 

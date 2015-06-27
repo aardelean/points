@@ -1,11 +1,11 @@
 {
     "realm": "coordinatesRealm",
-    "realm-public-key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZFcmbsvYily6As7TQxRGvF7kR4DrP/ZXsOIaPcdHZbPIrqH8dbvULVVxCacUL5NB7TbLO+mVob0tcIyqdrK2az5luOEfmPPo5j0YCQijJEqFd4c6sPZvRzPsGisoNSP2t586LpqxwcLVWd2ibs6xe6ZESoP36x6//RzIOOeO2UQIDAQAB",
-    "auth-server-url": "https://localhost:8443/auth",
+    "realm-public-key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCEbl8bCdmXSe9Cc6ATAC98xnq36IjXEhWDIAeymFhvhh0MSK+R0bCSnhgRRC4vC3c29Fn+8E51fiSr/oPL0kmH1hu5r/tPy++Nz21Wne0civJksHtkz7kAkR8uXjda+cJh9o7JAw+aQKkeL2WE5CUuM7g68NlHLJ3oH1ZIDXYwtQIDAQAB",
+    "auth-server-url": "http://localhost:8080/auth",
     "ssl-required": "external",
-    "resource": "socialProvider",
+    "resource": "points",
     "credentials": {
-        "secret": "765b449a-3c92-45a8-b7f5-582e64028c48"
+        "secret": "f0199122-5c9d-4603-9ae7-c58a80107645"
     },
     "use-resource-role-mappings": true,
     "disable-trust-manager": true

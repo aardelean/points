@@ -23,6 +23,6 @@ public class SocialSettingsProvider {
     @Produces
     @Facebook
     @OAuthApplication(params = {@Param(name = OAuthAppSettingsBuilder.PREFIX, value = "facebook"),
-            @Param(name = OAuthAppSettingsBuilder.CALLBACK, value = "https://localhost:8443/socialProvider/facebook/callback")})
+            @Param(name = OAuthAppSettingsBuilder.CALLBACK, value = "https://live-coordinates.ddns.net:8443/socialProvider/facebook/callback")})
     public static OAuthAppSettings facebookSettings;
 }

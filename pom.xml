@@ -8,16 +8,22 @@
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>points-facebook</module>
+    </modules>
     <properties>
+        <keycloakVersion>1.2.0.CR1</keycloakVersion>
         <hibernateVersion>4.3.8.Final</hibernateVersion>
         <junit-version>4.11</junit-version>
         <hibernate-ogm>4.1.1.Final</hibernate-ogm>
         <hibernate-search>5.0.1.Final</hibernate-search>
+        <jackson.version>1.9.9</jackson.version>
         <infinispan>7.0.3.Final</infinispan>
         <dalicore.version>1.1.0</dalicore.version>
         <arquillian-version>1.1.4.Final</arquillian-version>
-        <arquillian-wildfly-version>8.1.0.Final</arquillian-wildfly-version>
+        <arquillian-wildfly-version>8.2.0.Final</arquillian-wildfly-version>
         <arquillian-transaction-version>1.0.1.Final</arquillian-transaction-version>
+        <jboss.logging.version>3.1.4.GA</jboss.logging.version>
     </properties>
     <repositories>
         <repository>
@@ -29,19 +35,45 @@
             <url>https://repository.jboss.org/maven2</url>
         </repository>
     </repositories>
-    <modules>
-        <module>ejb</module>
-        <module>bundle</module>
-        <module>client</module>
-        <module>api</module>
-        <module>socialProvider</module>
-        <module>test-war</module>
-        <module>transport</module>
-        <module>rest</module>
-        <module>facade</module>
-        <module>coordinates</module>
-        <module>test-ejb</module>
-    </modules>
+    <profiles>
+        <profile>
+            <id>test</id>
+            <modules>
+                <module>ejb</module>
+                <module>bundle</module>
+                <module>client</module>
+                <module>api</module>
+                <module>socialProvider</module>
+                <module>test-war</module>
+                <module>user-federation</module>
+                <module>transport</module>
+                <module>rest</module>
+                <module>facade</module>
+                <module>coordinates</module>
+                <module>test-ejb</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>deploy</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>user-federation</module>
+                <module>ejb</module>
+                <module>bundle</module>
+                <module>api</module>
+                <module>socialProvider</module>
+                <module>transport</module>
+                <module>rest</module>
+                <module>facade</module>
+                <module>coordinates</module>
+                <module>test-ejb</module>
+            </modules>
+        </profile>
+    </profiles>
+
     <dependencyManagement>
         <dependencies>
             <!--internal deployed libs-->
@@ -85,6 +117,7 @@
                 <artifactId>test-war</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>
+                <type>war</type>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
@@ -124,6 +157,72 @@
                 <version>5.1.30</version>
                 <scope>provided</scope>
             </dependency>
+
+            <!-- KEYCLOAK SPI-->
+
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging</artifactId>
+                <version>${jboss.logging.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-core</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-model-api</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-login-api</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-login-freemarker</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-model-jpa</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-social-core</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-broker-oidc</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-social-core</artifactId>
+                <version>${keycloakVersion}</version>
+                <scope>provided</scope>
+            </dependency>
+
 
 
             <!-- hibernate-search -->
@@ -227,12 +326,20 @@
                 <version>2.0.0</version>
                 <scope>provided</scope>
             </dependency>
-
-
-
-
         </dependencies>
-
     </dependencyManagement>
-
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

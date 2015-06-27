@@ -21,6 +21,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private SocialProvider socialProvider;
 
+    private String socialId;
+
     @OneToMany(mappedBy = "user")
     private List<ContactCollection> contactCollections;
 
@@ -138,5 +140,13 @@ public class User {
 
     public void setBelongingGroups(List<Group> belongingGroups) {
         this.belongingGroups = belongingGroups;
+    }
+
+    public String getSocialId() {
+        return socialId;
+    }
+
+    public void setSocialId(String socialId) {
+        this.socialId = socialId;
     }
 }

@@ -31,6 +31,7 @@
     <dependency>
         <groupId>points</groupId>
         <artifactId>test-war</artifactId>
+        <type>war</type>
     </dependency>
     <!--jee-->
     <dependency>
@@ -167,12 +168,8 @@
 
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -184,8 +181,8 @@
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <!-- the maven dependency plugin will have already downloaded the server on /target -->
-                        <jboss.home>d:/install/wildfly</jboss.home>
-                        <module.path>d:/install/wildfly/modules</module.path>
+                        <jbossHome>d:/work/coordinates/empty-wildfly</jbossHome>
+                        <module.path>D:/work/coordinates/empty-wildfly/modules</module.path>
                     </systemPropertyVariables>
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
                 </configuration>

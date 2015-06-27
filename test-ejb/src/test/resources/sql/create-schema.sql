@@ -1,4 +1,5 @@
-CREATE TABLE `contactcollection` (
+SET FOREIGN_KEY_CHECKS=0;
+CREATE TABLE `contactCollection` (
   `id` bigint(20) NOT NULL,
   `contactIds` mediumblob,
   `source` varchar(255) DEFAULT NULL,
@@ -133,7 +134,7 @@ CREATE TABLE `usermessage` (
 
   
 
-CREATE TABLE `userstatus` (
+CREATE TABLE `userStatus` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `lastModified` datetime DEFAULT NULL,
   `pingTime` int(11) DEFAULT NULL,
@@ -145,4 +146,4 @@ CREATE TABLE `userstatus` (
   CONSTRAINT `FK_4x8kuyxn9aqi07ik4nbs9v7r4` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+SET FOREIGN_KEY_CHECKS=1;
